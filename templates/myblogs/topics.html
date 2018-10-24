@@ -1,0 +1,17 @@
+{% extends "myblogs/base.html" %}
+
+{% block content %}
+
+<p>Topics</p>
+
+<ul>
+    {% for topic in topics %}
+    <li>
+    <a href="{% url 'myblogs:topic' topic.id %}">{{ topic }}</a>
+    </li>
+    {% empty %}
+    <li>No topics have been added yet.</li>
+    {% endfor %}
+</ul>
+    <a href="{% url 'myblogs:new_topic' %}">Add a new topic:</a>
+{% endblock content %}
