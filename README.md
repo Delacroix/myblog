@@ -1,1 +1,1 @@
-# Myblog -- Practice codding Based on Python Crash Course 
+# Myblog -- Practice coding Based on Python Crash Course 
