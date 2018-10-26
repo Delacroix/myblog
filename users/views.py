@@ -5,13 +5,14 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('myblogs:index'))
 
 
 def register(request):
-    if request.method !='POST':
+    if request.method != 'POST':
         form = UserCreationForm()
     else:
         form = UserCreationForm(data=request.POST)
