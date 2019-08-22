@@ -4,12 +4,20 @@ from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from .forms import TopicForm, EntryForm
 from django.contrib.auth.decorators import login_required
+from kubernetes import client, config
 
 # Create your views here.
 
 
 def index(request):
     return render(request, 'myblogs/index.html')
+
+
+@login_required
+def data_sheet(request):
+    config.load_kube_config()
+    data_sheet = models.ListService.service_info
+    return render(request, 'myblogs/data_sheet.html', {'data_sheet': data_sheet})
 
 
 @login_required

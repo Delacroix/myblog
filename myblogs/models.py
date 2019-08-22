@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from kubernetes import client, config
 
 # Create your models here.
 
@@ -23,3 +24,12 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.text[:50] + "..."
+
+
+class ListService(models.Model):
+    config.load_kube_config()
+    v1 = client.CoreV1Api()
+    service_info = v1.list_service_for_all_namespaces(watch=False)
+
+    def __str__(self):
+        return self.service_info

@@ -1,0 +1,21 @@
+{% extends "myblogs/base.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Service Name</th>
+        <th>Cluster IP</th>
+        <th>NodePort</th>
+    </tr>
+</thead>
+<tbody>
+    {% for i in service_info.items %}
+    <tr>
+    <td>svc1</td>
+    <td>1.1.1.1</td>
+    <td>8080</td>
+</tr>
+</tbody>
+</table>
+{% endblock %}
