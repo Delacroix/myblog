@@ -12,6 +12,9 @@ urlpatterns = [
     re_path(r'^new_entry/(?P<topic_id>\d+)/$', views.new_entry, name='new_entry'),
     re_path(r'^edit_entry/(?P<entry_id>\d+)/$', views.edit_entry,
             name='edit_entry'),
-    re_path(r'^data_sheet/$', views.data_sheet, name='data_sheet'),
+    re_path(r'^service_info/$', views.service_info, name='service_info'),
+    re_path(r'^deploy_list/$', views.deploy_list, name='deploy_list'),
+    re_path(r'^node_list/$', views.node_list, name='node_list'),
+
 ]
 

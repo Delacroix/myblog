@@ -1,0 +1,22 @@
+{% extends "myblogs/base.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Deployment Name</th>
+        <th>Namespace</th>
+        <th>Replicas</th>
+    </tr>
+</thead>
+<tbody>
+    {% for i in deploy_list.items %}
+    <tr>
+        <td>{{ i.metadata.name }}</td>
+        <td>{{ i.metadata.namespace }}</td>
+        <td>{{ i.status.replicas }}/{{ i.spec.replicas }}</td>
+    {% endfor %}
+    </tr>
+</tbody>
+</table>
+{% endblock %}

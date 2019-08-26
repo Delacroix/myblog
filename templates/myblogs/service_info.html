@@ -12,10 +12,11 @@
 <tbody>
     {% for i in service_info.items %}
     <tr>
-    <td>svc1</td>
-    <td>1.1.1.1</td>
-    <td>8080</td>
-</tr>
+        <td>{{ i.metadata.name }}</td>
+        <td>{{ i.spec.cluster_ip }}</td>
+        <td>{{ i.spec.ports }}</td>
+    {% endfor %}
+    </tr>
 </tbody>
 </table>
 {% endblock %}

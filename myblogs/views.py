@@ -14,10 +14,25 @@ def index(request):
 
 
 @login_required
-def data_sheet(request):
+def service_info(request):
     config.load_kube_config()
-    data_sheet = models.ListService.service_info
-    return render(request, 'myblogs/data_sheet.html', {'data_sheet': data_sheet})
+    v1 = client.CoreV1Api()
+    service_info = v1.list_service_for_all_namespaces(watch=False)
+    return render(request, 'myblogs/service_info.html', {'service_info': service_info})
+
+
+def deploy_list(request):
+    config.load_kube_config()
+    extension = client.ExtensionsV1beta1Api()
+    deploy_list = extension.list_deployment_for_all_namespaces(watch=False)
+    return render(request, 'myblogs/deploy_list.html', {'deploy_list': deploy_list})
+
+
+def node_list(request):
+    config.load_kube_config()
+    node = client.V1NodeList()
+    node_list = node.list_deployment_for_all_namespaces(watch=False)
+    return render(request, 'myblogs/node_list.html', {'node_list': node_list})
 
 
 @login_required
