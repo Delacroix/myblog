@@ -5,3 +5,4 @@ from myblogs.models import Topic, Entry
 
 admin.site.register(Topic)
 admin.site.register(Entry)
+admin.site.register(Entry)
