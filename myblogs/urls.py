@@ -15,6 +15,7 @@ urlpatterns = [
     re_path(r'^service_info/$', views.service_info, name='service_info'),
     re_path(r'^deploy_list/$', views.deploy_list, name='deploy_list'),
     re_path(r'^node_list/$', views.node_list, name='node_list'),
+    re_path(r'^new_service/$', views.new_service, name='new_service'),
 
 ]
 

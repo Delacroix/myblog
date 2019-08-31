@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Topic, Entry
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
-from .forms import TopicForm, EntryForm
+from .forms import TopicForm, EntryForm, ServiceForm
 from django.contrib.auth.decorators import login_required
 from kubernetes import client, config
 
@@ -15,10 +15,10 @@ def index(request):
 
 @login_required
 def service_info(request):
-    config.load_kube_config()
-    v1 = client.CoreV1Api()
-    service_info = v1.list_service_for_all_namespaces(watch=False)
-    return render(request, 'myblogs/service_info.html', {'service_info': service_info})
+   config.load_kube_config()
+   v1 = client.CoreV1Api()
+   service_info = v1.list_service_for_all_namespaces(watch=False)
+   return render(request, 'myblogs/service_info.html', {'service_info': service_info})
 
 
 def deploy_list(request):
@@ -105,3 +105,20 @@ def edit_entry(request, entry_id):
 
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'myblogs/edit_entry.html', context)
+
+
+def new_service(request):
+    config.load_kube_config()
+    api_instance = client.CoreV1Api()
+    service = client.V1Service()
+    service.api_version = "v1"
+    service.kind = "Service"
+    service.metadata = client.V1ObjectMeta(name='my-service')
+    spec = client.V1ServiceSpec()
+    spec.selector = {"app": 'MyApps'}
+    spec.ports = [client.V1ServicePort(protocol='TCP',
+                                       port=80,
+                                       target_port=8080)]
+    service.spec = spec
+    api_instance.create_namespaced_service(namespace="default", body=service)
+    return render(request, 'service_info.html', {'service_info': service_info})

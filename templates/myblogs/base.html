@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width", initial-scale=1>
 
-    <title>My Blog</title>
+    <title>K8S Django DEMO</title>
 
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -23,7 +23,7 @@
                 aria-expanded="false" aria-controls="navbar">
             </button>
             <a class="navbar-brand" href="{% url 'myblogs:index' %}">
-                My Blog
+                首页
             </a>
             </div>
 
@@ -32,6 +32,7 @@
                     <li><a href="{% url 'myblogs:topics' %}">Topics</a></li>
                     <li><a href="{% url 'myblogs:service_info' %}">Service Info</a></li>
                     <li><a href="{% url 'myblogs:deploy_list' %}">Deployment List</a> </li>
+                    <li><a href="{% url 'myblogs:new_service' %}">New Service</a> </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

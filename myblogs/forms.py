@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Topic, Entry
+from .models import Topic, Entry, Service
 
 
 class TopicForm(forms.ModelForm):
@@ -16,3 +16,8 @@ class EntryForm(forms.ModelForm):
         fields = ['text']
         labels = {'text': ''}
         widgets = {'text': forms.Textarea(attrs={'cols': 80})}
+
+
+class ServiceForm(forms.ModelForm):
+    class Meta:
+        svc_name = forms.CharField()
