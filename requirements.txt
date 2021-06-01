@@ -30,6 +30,6 @@ rsa==3.4.2
 six==1.11.0
 static3==0.7.0
 typed-ast==1.4.0
-urllib3==1.22
+urllib3==1.26.5
 websocket-client==0.47.0
 wrapt==1.11.2
